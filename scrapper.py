@@ -165,8 +165,9 @@ br.addheaders = [('User-agent', 'Chrome')]
 br.open(base_url)
 formcount=0
 for frm in br.forms():  
-  if str(frm.attrs["id"])=="form-login":
-    break
+  if "id" in frm.attrs:
+    if str(frm.attrs["id"])=="form-login":
+      break
   formcount=formcount+1
 br.select_form(nr=formcount)
 br.form['username'] = username
